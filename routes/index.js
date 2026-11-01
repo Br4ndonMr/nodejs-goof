@@ -70,11 +70,10 @@ function adminLoginSuccess(redirectPage, session, username, res) {
   // Log the login action for audit
   console.log(`User logged in: ${username}`)
 
-if (typeof redirectPage === 'string' && redirectPage.startsWith('/') && !redirectPage.startsWith('//')) {
-    return res.redirect(redirectPage)
-  } else {
-    return res.redirect('/admin')
+if (redirectPage === '/account_details') {
+    return res.redirect('/account_details')
   }
+  return res.redirect('/admin')
 }
 
 exports.login = function (req, res, next) {
